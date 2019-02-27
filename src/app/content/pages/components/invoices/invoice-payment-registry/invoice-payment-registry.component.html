@@ -1,0 +1,37 @@
+<div id="m_modal-3" class="modal-md">
+  <div class="modal-header green-row regular-header text-center">
+    <div class="green-container">
+      <h3 class="m--margin-bottom-10">Registrar pago</h3>
+      <p class="m--margin-bottom-15">Indica el monto que deseas asociar a esta factura.</p>
+      <input formControlName="paymentRegistry" class="bignumber green-modal" id="paymentRegistry" type="text"
+        placeholder="{{0 | currency:'COP':'symbol-narrow':'1.0'}}">
+    </div>
+  </div>
+  <div class="modal-body">
+    <label class="m--margin-bottom-10">
+      Método de pago:
+    </label>
+    <div class="text-center m-buttons m--margin-bottom-20">
+      <button type="button" class="btn btn-secondary btn-lg m-btn m-btn--icon m--margin-right-10"><i class="la la-money m--margin-right-10"></i>
+        Efectivo</button>
+      <button type="button" class="btn btn-secondary btn-lg m-btn m-btn--icon m--margin-right-10"><i class="fa fa-money-check-alt m--margin-right-10"></i>
+        Cheque</button>
+      <button type="button" class="btn btn-secondary btn-lg m-btn m-btn--icon"><i class="la la-bank m--margin-right-10"></i>
+        Consignación</button>
+    </div>
+    <label class="m--margin-bottom-10">
+      Referencia de pago:
+    </label>
+    <input class="form-control m-input" id="payment-ref" type="text" placeholder="Escribe una nota o referencia de este pago">
+  </div>
+  <div class="modal-footer">
+    <div class="text-center">
+      <button type="button" class="btn btn-secondary btn-lg m--margin-right-10" data-dismiss="modal">
+        Cancelar
+      </button>
+      <button (click)="openConfirmation()" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#m_modal-6">
+        Registrar pago
+      </button>
+    </div>
+  </div>
+</div>

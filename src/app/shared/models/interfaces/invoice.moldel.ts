@@ -1,0 +1,30 @@
+export interface IInvoice {
+  invoiceNumber: number;
+  business_id: number;
+  order_id: number;
+  record_locator: string;
+  dateCreated: string;
+  date_modified: string;
+  date_modified_gmt: string;
+  dueDate: string;
+  business_name: string;
+  merchant_id: string;
+  currency: string;
+  unit_price: number;
+  quantity: number;
+  subtotal: number;
+  total_taxes: number;
+  total_discounts: number;
+  totalAmount: number;
+  customerName: string;
+  customer_email: string;
+  customer_note: string;
+  payment_status: string;
+  payment_method: string;
+  authorization_code: number;
+  status_code: string;
+  statusDescription: string;
+  card_number: string;
+  card_brand: string;
+  issuer_bank: string;
+}

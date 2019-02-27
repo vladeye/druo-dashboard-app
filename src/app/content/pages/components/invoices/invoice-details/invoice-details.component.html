@@ -1,0 +1,799 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+  <!-- BEGIN: Subheader -->
+  <div class="m-subheader ">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h1 class="m-subheader__title m-subheader__title--separator">
+          Factura #{{(invoicesSandbox.invoiceDetails$ | async).invoiceNumber }}
+        </h1>
+        <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+          <li class="m-nav__item m-nav__item--home">
+            <a href="../../" class="m-nav__link m-nav__link--icon">
+              <i class="m-nav__link-icon la la-home"></i>
+            </a>
+          </li>
+          <li class="m-nav__separator">
+            -
+          </li>
+          <li class="m-nav__item">
+            <a href="../" class="m-nav__link">
+              <span class="m-nav__link-text">
+                Facturas
+              </span>
+            </a>
+          </li>
+          <li class="m-nav__separator">
+            -
+          </li>
+          <li class="m-nav__item">
+            <a href="" class="m-nav__link">
+              <span class="m-nav__link-text">
+                Factura #{{(invoicesSandbox.invoiceDetails$ | async).invoiceNumber }}
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
+          m-dropdown-toggle="hover" aria-expanded="true" style="margin-right: 10px;">
+          <button type="button" (click)="openAnnulInvoiceDialog()" class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md"
+            data-toggle="modal" data-target="#m_modal-2">
+            <i class="flaticon-circle m--margin-right-5"></i> Anular
+          </button>
+        </div>
+        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
+          m-dropdown-toggle="hover" aria-expanded="true" style="margin-right: 10px;">
+          <button (click)="openInvoiceRegistroPagoDialog()" type="button" class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md"
+            data-toggle="modal" data-target="#m_modal-3">
+            <i class="la la-money m--margin-right-5"></i> Registrar pago
+          </button>
+        </div>
+        <!--<div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
+          m-dropdown-toggle="hover" aria-expanded="true">
+          <button type="button" class="btn btn-info m-btn m-btn--icon m-btn--wide m-btn--md" data-toggle="modal"
+            data-target="#m_modal">
+            <i class="fa fa-money-bill-wave m--margin-right-5"></i> Cobrar saldo pendiente
+          </button>
+        </div>-->
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="m-separator m-sepatator-top"></div>
+    </div>
+    <div class="col-xl-4">
+      <div class="m-portlet">
+        <div class="m-portlet__head">
+          <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+              <h2 class="m-portlet__head-text">Estado de pago</h2>
+            </div>
+          </div>
+          <div class="m-portlet__head-tools">
+            <span class="m-badge m-badge--success m-badge--wide" [style.color]="setColorStatus((invoicesSandbox.invoiceDetails$ | async).statusCode)"
+              [style.background-color]="setBackgroundColorStatus((invoicesSandbox.invoiceDetails$ | async).statusCode)">{{
+              setTranslateLabelStatus((invoicesSandbox.invoiceDetails$ | async).statusCode)| translate }}</span>
+          </div>
+        </div>
+        <div class="m-portlet__body">
+          <table class="table preview m-margin-bottom-0">
+            <tbody>
+              <tr>
+                <td>
+                  Fecha último pago
+                </td>
+                <td>
+                  <b>{{(invoicesSandbox.invoiceDetails$ | async).createDate | date:'mediumDate' }}</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Valor pagado
+                </td>
+                <td>
+                  <b>{{(invoicesSandbox.invoiceDetails$ | async).totalAmount | currency:'COP':'symbol-narrow':'1.2-2'}}</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Método de pago
+                </td>
+                <td>
+                  <b>{{(invoicesSandbox.invoiceDetails$ | async).paymentMethod }}</b>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="m-portlet m-widget28">
+        <div class="m-portlet__head green-row" style="border-top-right-radius: 5px; border-top-left-radius: 5px; border:0px;">
+          <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+              <h2 class="m-portlet__head-text">Compartir factura</h2>
+            </div>
+          </div>
+        </div>
+        <div class="green-row text-center m-widget28__container">
+          <!-- begin::Nav pills -->
+          <ul class="m-widget28__nav-items nav nav-pills nav-fill m--padding-bottom-10" role="tablist">
+            <li class="m-widget28__nav-item nav-item">
+              <a class="nav-link" data-toggle="pill" href="#">
+                <span>
+                  <i class="la la-copy"></i>
+                </span>
+                <span>
+                  Copiar link
+                </span>
+              </a>
+            </li>
+            <li class="m-widget28__nav-item nav-item">
+              <a class="nav-link" data-toggle="pill" href="#menu21">
+                <span>
+                  <i class="la la-file-pdf-o"></i>
+                </span>
+                <span>
+                  Descargar PDF
+                </span>
+              </a>
+            </li>
+            <li class="m-widget28__nav-item nav-item">
+              <a class="nav-link" data-toggle="pill" href="#menu31">
+                <span>
+                  <i class="la la-print"></i>
+                </span>
+                <span>
+                  Imprimir
+                </span>
+              </a>
+            </li>
+          </ul>
+          <!-- end::Nav pills -->
+        </div>
+        <div class="m-portlet__body">
+          <form class="m-form m-form--label-align-right m--margin-bottom-20">
+            <div class="form-group m-form__group">
+              <label>
+                Link de Factura
+              </label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="druo.com/A10000">
+                <div class="input-group-append">
+                  <button class="btn btn-info" type="button">
+                    Copiar enlace
+                  </button>
+                </div>
+              </div>
+              <label>
+                Enviar por E-mail
+              </label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="e-mail@example.com">
+                <div class="input-group-append">
+                  <button class="btn btn-info" type="button">
+                    Enviar e-mail
+                  </button>
+                </div>
+              </div>
+              <label>
+                Enviar por SMS
+              </label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="+57-000-0000">
+                <div class="input-group-append">
+                  <button class="btn btn-info" type="button">
+                    Enviar SMS
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--begin:: Widgets/Audit Log-->
+      <div class="m-portlet">
+        <div class="m-portlet__head">
+          <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+              <h3 class="m-portlet__head-text">
+                Actividad de factura
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="m-portlet__body m--padding-bottom-20">
+          <div class="m-list-timeline m-list-timeline--skin-light">
+            <div class="m-list-timeline__items">
+              <div class="m-list-timeline__item">
+                <span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
+                <span class="m-list-timeline__text">
+                  Pago completado - {{(invoicesSandbox.invoiceDetails$ | async).paymentMethod }}
+                  ({{(invoicesSandbox.invoiceDetails$ | async).totalAmount |
+                  currency:'COP':'symbol-narrow':'1.2-2'}})
+                </span>
+                <span class="m-list-timeline__time">
+                  Ahora <a href="#" class="m-link">
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+                </span>
+              </div>
+              <div class="m-list-timeline__item">
+                <span class="m-list-timeline__badge m-list-timeline__badge--info"></span>
+                <span class="m-list-timeline__text">
+                  Factura leída
+                </span>
+                <span class="m-list-timeline__time">
+                  14 mins
+                </span>
+              </div>
+              <div class="m-list-timeline__item">
+                <span class="m-list-timeline__badge m-list-timeline__badge--danger"></span>
+                <span class="m-list-timeline__text">
+                  Factura enviada
+                </span>
+                <span class="m-list-timeline__time">
+                  20 mins
+                </span>
+              </div>
+              <div class="m-list-timeline__item">
+                <span class="m-list-timeline__badge m-list-timeline__badge--accent"></span>
+                <span class="m-list-timeline__text">
+                  Pago parcial Tarjeta Visa *3999 ($15,000)
+                </span>
+                <span class="m-list-timeline__time">
+                  1 hr <a href="#" class="m-link">
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+                </span>
+              </div>
+              <div class="m-list-timeline__item">
+                <span class="m-list-timeline__badge m-list-timeline__badge--warning"></span>
+                <span class="m-list-timeline__text">
+                  Pago declinado
+                </span>
+                <span class="m-list-timeline__time">
+                  2 hrs <a href="#" class="m-link">
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+                </span>
+              </div>
+              <div class="m-list-timeline__item">
+                <span class="m-list-timeline__badge m-list-timeline__badge--brand"></span>
+                <span class="m-list-timeline__text">
+                  Factura leída
+                </span>
+                <span class="m-list-timeline__time">
+                  3 hrs
+                </span>
+              </div>
+              <div class="m-list-timeline__item">
+                <span class="m-list-timeline__badge m-list-timeline__badge--info"></span>
+                <span class="m-list-timeline__text">
+                  Factura enviada
+                </span>
+                <span class="m-list-timeline__time">
+                  5 hrs
+                </span>
+              </div>
+              <div class="m-list-timeline__item">
+                <span class="m-list-timeline__badge m-list-timeline__badge--success"></span>
+                <span href="" class="m-list-timeline__text">
+                  Factura creada
+                </span>
+                <span class="m-list-timeline__time">
+                  7 hrs
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end:: Widgets/Audit Log-->
+    </div>
+    <div class="col-xl-8">
+      <!--Start: Invoice-->
+      <div class="m-portlet m--marginless">
+        <div class="m-portlet__body m-portlet__body--no-padding">
+          <div class="m-invoice-1">
+            <div class="m-invoice__wrapper">
+              <div class="m-invoice__head" style="background: #0070C8;">
+                <div class="m-invoice__container m-invoice__container--centered">
+                  <div class="m-invoice__logo text-center">
+                    <img src="../../assets/demo/default/media/img/misc/novo-logo.png">
+                  </div>
+                  <span class="m-invoice__desc text-center">
+                    <span class="bignumber">
+                      {{(invoicesSandbox.invoiceDetails$ | async).totalAmount | currency:'COP':'symbol-narrow':'1.2-2'
+                      }}
+                    </span>
+                    <span>
+                      Valor total
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div class="m-invoice__head m-invoice_subhead" style="background: #005292;">
+                <div class="m-invoice__container m-invoice__container--centered">
+                  <div class="m-invoice__items">
+                    <div class="m-invoice__item">
+                      <span class="m-invoice__subtitle">
+                        Fecha de envío
+                      </span>
+                      <span class="m-invoice__text">
+                        {{(invoicesSandbox.invoiceDetails$ | async).createDate | date:'mediumDate'}}
+                      </span>
+                    </div>
+                    <div class="m-invoice__item text-center">
+                      <span class="m-invoice__subtitle">
+                        Plazo de pago
+                      </span>
+                      <span class="m-invoice__text">
+                        {{(invoicesSandbox.invoiceDetails$ | async).dueDate | date:'mediumDate' }}
+                      </span>
+                    </div>
+                    <div class="m-invoice__item text-right">
+                      <span class="m-invoice__subtitle">
+                        N° de factura
+                      </span>
+                      <span class="m-invoice__text">
+                        {{(invoicesSandbox.invoiceDetails$ | async).invoiceNumber }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="m-invoice__body m-invoice__body--centered">
+                <div class="alert m-alert--default" role="alert">
+                  <i>Café Novo S.A.S, titular del comercio Café Novo no requiere la aprobación de las autoridades
+                    monetarias de Colombia. Recomendamos a los clientes que lean los Términos y condiciones con
+                    detenimiento.</i>
+                </div>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>
+                          <h2>Descripción</h2>
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th>
+                          <h2>Total</h2>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of (invoicesSandbox.invoiceDetails$ | async).conceptset ">
+                        <td>
+                          {{ item.itemDescription }}<br>
+                          <span>x{{ item.itemQty }}</span>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                          {{ item.itemQty * item.itemUnitPrice | currency:'COP':'symbol-narrow':'1.2-2'}}
+                        </td>
+                      </tr>
+                      <tr class="border-bottom">
+                        <td class="m-padding-cero">
+                        </td>
+                        <td class="m-padding-cero">
+                        </td>
+                        <td class="m-padding-cero">
+                        </td>
+                        <td class="m-padding-cero">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="m-padding-top-cero"></td>
+                      </tr>
+                      <tr>
+                        <td>
+                        </td>
+                        <td class="">
+                          Subtotal
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                          {{(invoicesSandbox.invoiceDetails$ | async).subTotalAmount |
+                          currency:'COP':'symbol-narrow':'1.2-2' }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                        </td>
+                        <td class="">
+                          IVA (19%)
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                          ({{(invoicesSandbox.invoiceDetails$ | async).tax | currency:'COP':'symbol-narrow':'1.2-2' }})
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                        </td>
+                        <td>
+                          Total
+                        </td>
+                        <td>
+                        </td>
+                        <td class="total m--font-success">
+                          {{(invoicesSandbox.invoiceDetails$ | async).totalAmount |
+                          currency:'COP':'symbol-narrow':'1.2-2' }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="m-invoice__footer">
+                <div class="m-invoice__container m-invoice__container--centered">
+                  <div class="m-invoice__content">
+                    <span>
+                      <h3>Café Novo</h3>
+                    </span>
+                    <span>
+                      <span class="data-footer">
+                        Café Novo S.A.S<br>
+                        pedidos@cafenovo.com<br>
+                        9009085995-5
+                      </span>
+                      <span></span>
+                    </span>
+                  </div>
+                  <div class="m-invoice__content">
+                    <div style="width: 70px;"></div>
+                  </div>
+                  <div class="m-invoice__content">
+                    <span class="text-right">
+                      <h3>Datos cliente</h3>
+                    </span>
+                    <span>
+                      <span>
+
+                      </span>
+                      <span class="data-footer">
+                        Alejandro Pinzón<br>
+                        apinzon@druo.com<br>
+                        3019876655
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <div class="m-invoice__container m-invoice__container--centered minus-pad-1">
+                  <div class="m-invoice__content ">
+                    <span></span>
+                    <span>
+                      <span class="m--align-left">
+                        <i>Si tiene alguna duda con su factura no dude en comunicarse con nosotros al teléfono de
+                          servicio al cliente: +573045677.</i>
+                      </span>
+                      <span class="">
+
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End: Invoice-->
+  </div>
+  <!--End: Invoice-->
+  <!--Start: Modal 1-->
+  <div class="modal fade" id="m_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header green-row irregular-header text-center" style="display: block;">
+          <h3 class="m--margin-bottom-20">Monto a cobrar:</h3>
+          <span class="bignumber green-modal">$150,000</span>
+          <p class="m--margin-top-20">Vas a hacer un cobro de $150,000.</p>
+        </div>
+        <div class="modal-body m--padding-bottom-20">
+          <form class="m-form m-form--label-align-right">
+            <div class="form-group m-form__group row mod-labels">
+              <div class="col-md-3 m--margin-bottom-20">
+                <label>
+                  Link de Factura
+                </label>
+              </div>
+              <div class="col-md-9 m--margin-bottom-20">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="druo.com/A10000">
+                  <div class="input-group-append">
+                    <button class="btn btn-info" type="button">
+                      Copiar enlace
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 m--margin-bottom-20">
+                <label>
+                  Enviar por E-mail
+                </label>
+              </div>
+              <div class="col-md-9 m--margin-bottom-20">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="e-mail@example.com">
+                  <div class="input-group-append">
+                    <button class="btn btn-info" type="button">
+                      Enviar e-mail
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label>
+                  Enviar por SMS
+                </label>
+              </div>
+              <div class="col-md-9">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="+57-000-0000">
+                  <div class="input-group-append">
+                    <button class="btn btn-info" type="button">
+                      Enviar SMS
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="m-separator m-separator--lg m--margin-bottom-20"></div>
+          <div class="text-center">
+            <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End: Modal 1-->
+  <!--Start: Modal 2-->
+  <div class="modal fade" id="m_modal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header blue-row regular-header text-center" style="display: block;">
+          <i class="flaticon-exclamation"></i>
+          <h2 class="m--margin-bottom-30 m--margin-top-10">¿Está seguro que desea anular esta factura?</h2>
+          <span class="m--margin-top-10">Si anula esta factura, no podrá tener registro de los pagos elaborados en esta
+            factura y si desea hacer futuros cobros en ella, deberá crear una nueva. Esta acción no se puede deshacer.</span>
+        </div>
+        <div class="modal-body">
+          <div class="text-center">
+            <button type="button" class="btn btn-secondary btn-lg m--margin-right-10" data-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-secondary btn-lg m--margin-right-10" data-toggle="modal" data-target="#m_modal-4">
+              Reembolsar y anular
+            </button>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#m_modal-5">
+              Solo anular
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End: Modal 2-->
+  <!--Start: Modal 3-->
+  <div class="modal fade" id="m_modal-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header green-row regular-header text-center" style="display: block;">
+          <h3 class="m--margin-bottom-10">Registrar pago</h3>
+          <p class="m--margin-bottom-20">Indica el monto que deseas asociar a esta factura.</p>
+          <span class="bignumber green-modal">$150,000</span>
+        </div>
+        <div class="modal-body m--padding-bottom-20">
+          <label class="m--margin-bottom-10">
+            Método de pago:
+          </label>
+          <div class="text-center m-buttons m--margin-bottom-20">
+            <button type="button" class="btn btn-secondary btn-lg m-btn m-btn--icon m--margin-right-10"><i class="la la-money m--margin-right-10"></i>
+              Efectivo</button>
+            <button type="button" class="btn btn-secondary btn-lg m-btn m-btn--icon m--margin-right-10"><i class="fa fa-money-check-alt m--margin-right-10"></i>
+              Cheque</button>
+            <button type="button" class="btn btn-secondary btn-lg m-btn m-btn--icon"><i class="la la-bank m--margin-right-10"></i>
+              Consignación</button>
+          </div>
+          <label class="m--margin-bottom-10">
+            Referencia de pago:
+          </label>
+          <input class="form-control m-input" id="payment-ref" type="text" placeholder="Escribe una nota o referencia de este pago">
+          <div class="m-separator m-separator--lg m--margin-bottom-20"></div>
+          <div class="text-center">
+            <button type="button" class="btn btn-secondary btn-lg m--margin-right-10" data-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#m_modal-6">
+              Registrar pago
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End: Modal 3-->
+  <!--Start: Modal 4-->
+  <div class="modal fade" id="m_modal-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header blue-row irregular-header text-center" style="display: block;">
+          <p>Monto total de transacción: $450,000</p>
+          <h3 class="m--margin-bottom-20">Monto a reembolsar:</h3>
+          <span class="bignumber blue-modal">$200,000</span>
+          <p class="m--margin-top-20">El valor máximo que puedes reembolsar es $450,000</p>
+        </div>
+        <div class="modal-body m--padding-bottom-20">
+          <label for="example_input_full_name">
+            Método de reembolso:
+          </label>
+          <div class="row m--margin-bottom-20">
+            <div class="col-md-4">
+              <label class="m-option">
+                <span class="m-option__control">
+                  <span class="m-radio m-radio--accent m-radio--check-bold">
+                    <input type="radio" name="m_option_1" value="1">
+                    <span></span>
+                  </span>
+                </span>
+                <span class="m-option__label">
+                  <span class="m-option__head">
+                    <span class="m-option__title">
+                      Efectivo
+                    </span>
+                  </span>
+                  <span class="m-option__body">
+                    Se reembolsarán $200,000 en efectivo a tu cliente.
+                  </span>
+                </span>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label class="m-option">
+                <span class="m-option__control">
+                  <span class="m-radio m-radio--accent m-radio--check-bold">
+                    <input type="radio" name="m_option_1" value="1">
+                    <span></span>
+                  </span>
+                </span>
+                <span class="m-option__label">
+                  <span class="m-option__head">
+                    <span class="m-option__title">
+                      Tarjeta
+                    </span>
+                  </span>
+                  <span class="m-option__body">
+                    Se reembolsarán $200,000 a la tarjeta Visa *9359.
+                  </span>
+                </span>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label class="m-option">
+                <span class="m-option__control">
+                  <span class="m-radio m-radio--accent m-radio--check-bold">
+                    <input type="radio" name="m_option_1" value="1">
+                    <span></span>
+                  </span>
+                </span>
+                <span class="m-option__label">
+                  <span class="m-option__head">
+                    <span class="m-option__title">
+                      Bono en tienda
+                    </span>
+                  </span>
+                  <span class="m-option__body">
+                    Se le otorgará un bono de $200,000 a tu cliente para que haga compras en la tienda.
+                  </span>
+                </span>
+              </label>
+            </div>
+          </div>
+          <label>
+            Motivo de reembolso
+          </label>
+          <div class="m-radio-inline">
+            <label class="m-radio">
+              <input type="radio" name="damaged" value="1">
+              Producto dañado
+              <span></span>
+            </label>
+            <label class="m-radio">
+              <input type="radio" name="late" value="2">
+              Entrega tardia
+              <span></span>
+            </label>
+            <label class="m-radio">
+              <input type="radio" name="wrong-price" value="3">
+              Producto incorrecto
+              <span></span>
+            </label>
+            <label class="m-radio">
+              <input type="radio" name="fraud" value="4">
+              Fraude
+              <span></span>
+            </label>
+            <label class="m-radio">
+              <input type="radio" name="low-quality" value="5">
+              Baja Calidad
+              <span></span>
+            </label>
+          </div>
+          <div class="m-separator m--margin-top-40"></div>
+          <div class="text-center">
+            <button type="button" class="btn btn-secondary btn-lg m--margin-right-10" data-dismiss="modal">
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-dismiss="modal" data-target="#m_modal-5">
+              Reembolsar y anular
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End: Modal 4-->
+  <!--Start: Modal 5-->
+  <div class="modal fade" id="m_modal-5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered small-modal" role="document">
+      <div class="modal-content">
+        <div class="modal-header regular-header text-center" style="display: block;">
+          <img src="https://s3.us-east-2.amazonaws.com/druo.img/img/ico-check_2x.png" alt="Logo" width="100" height="100">
+          <h2 class="m--margin-bottom-30 m--margin-top-30">¡Tu factura ha sido anulada!</h2>
+          <span class="m--margin-top-10">Has procesado un reembolso por $200.000. <br>Los pagos asociados a esta
+            factura
+            han sido eliminados.</span>
+        </div>
+        <div class="modal-body m--padding-bottom-20 m--padding-top-20">
+          <div class="text-center">
+            <button type="button" class="btn btn-info btn-lg" data-dismiss="modal">
+              Ver facturas
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End: Modal 5-->
+  <!--Start: Modal 6-->
+  <div class="modal fade small-modal" id="m_modal-6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered small-modal" role="document">
+      <div class="modal-content">
+        <div class="modal-header regular-header text-center" style="display: block;">
+          <img src="https://s3.us-east-2.amazonaws.com/druo.img/img/ico-check_2x.png" alt="Logo" width="100" height="100">
+          <h2 class="m--margin-bottom-30 m--margin-top-30">¡Pago registrado con éxito!</h2>
+          <span class="m--margin-top-10">Has registrado el pago con referencia: 9303940384 a esta factura. Los estados
+            de
+            pago de esta factura han sido actualizado.</span>
+        </div>
+        <div class="modal-body m--padding-bottom-20 m--padding-top-20">
+          <div class="text-center">
+            <button type="button" class="btn btn-info btn-lg" data-dismiss="modal">
+              Ver factura
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

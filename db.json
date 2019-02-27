@@ -1,0 +1,556 @@
+{
+  "invoices": [
+    {
+      "customerName": "Vladimir Rodriguez",
+      "emailset": [
+        {
+          "customerEmail": "vladimirodriguez@gmail.com"
+        }
+      ],
+      "invoiceNumber": "34324324",
+      "invoiceMessage": "",
+      "conceptset": [
+        {
+          "itemDescription": "pan frances",
+          "itemUnitPrice": 300,
+          "itemQty": 9
+        }
+      ],
+      "discountset": [
+        {
+          "discountDescription": "navidad",
+          "discountValue": 2
+        }
+      ],
+      "subTotalAmount": 2646,
+      "tax": 502.74,
+      "totalAmount": 3148.74,
+      "statusCode": "11",
+      "paymentMethod": "Tarjeta Visa *1519",
+      "createDate": "2018-12-03T10:40:14.370Z",
+      "dueDate": "2019-01-02T10:40:14.372Z",
+      "id": 1
+    },
+    {
+      "customerName": "Vladimir Rodriguez",
+      "emailset": [
+        {
+          "customerEmail": "vladimirodriguez@gmail.com"
+        }
+      ],
+      "invoiceNumber": "645435254",
+      "invoiceMessage": "",
+      "conceptset": [
+        {
+          "itemDescription": "leche condensada",
+          "itemUnitPrice": 2300,
+          "itemQty": 2
+        }
+      ],
+      "discountset": [
+        {
+          "discountDescription": "navidad",
+          "discountValue": 2
+        }
+      ],
+      "subTotalAmount": 4508,
+      "tax": 856.52,
+      "totalAmount": 5364.52,
+      "statusCode": "12",
+      "paymentMethod": "Tarjeta Visa *1519",
+      "createDate": "2018-12-03T10:44:03.617Z",
+      "dueDate": "2019-01-02T10:44:03.620Z",
+      "id": 2
+    },
+    {
+      "customerName": "Vladimir Rodriguez",
+      "emailset": [
+        {
+          "customerEmail": "vladimirodriguez@gmail.com"
+        }
+      ],
+      "invoiceNumber": "9879322",
+      "invoiceMessage": "",
+      "conceptset": [
+        {
+          "itemDescription": "Pizza napolitana",
+          "itemUnitPrice": 5000,
+          "itemQty": 3
+        }
+      ],
+      "discountset": [
+        {
+          "discountDescription": "cumple",
+          "discountValue": 10
+        }
+      ],
+      "subTotalAmount": 13500,
+      "tax": 2565,
+      "totalAmount": 16065,
+      "statusCode": "10",
+      "paymentMethod": "Tarjeta Visa *1519",
+      "createDate": "2018-12-03T10:53:22.989Z",
+      "dueDate": "2019-01-02T10:53:22.992Z",
+      "id": 3
+    },
+    {
+      "customerName": "Vladimir Rodriguez",
+      "emailset": [
+        {
+          "customerEmail": "vladimirodriguez@gmail.com"
+        }
+      ],
+      "invoiceNumber": "34324324",
+      "invoiceMessage": "",
+      "conceptset": [
+        {
+          "itemDescription": "pan frances",
+          "itemUnitPrice": 900,
+          "itemQty": 10
+        },
+        {
+          "itemDescription": "leche condensada",
+          "itemUnitPrice": 2400,
+          "itemQty": 2
+        }
+      ],
+      "discountset": [
+        {
+          "discountDescription": "navidad",
+          "discountValue": 20
+        }
+      ],
+      "subTotalAmount": 11040,
+      "tax": 2097.6,
+      "totalAmount": 13137.6,
+      "statusCode": "10",
+      "paymentMethod": "Tarjeta Visa *1519",
+      "createDate": "2018-12-03T10:59:40.732Z",
+      "dueDate": "2019-01-02T10:59:40.735Z",
+      "id": 4
+    },
+    {
+      "customerName": "Vladimir Rodriguez",
+      "emailset": [
+        {
+          "customerEmail": "vladimirodriguez@gmail.com"
+        }
+      ],
+      "invoiceNumber": "34324324",
+      "invoiceMessage": "",
+      "conceptset": [
+        {
+          "itemDescription": "pan frances",
+          "itemUnitPrice": 900,
+          "itemQty": 2
+        }
+      ],
+      "discountset": [
+        {
+          "discountDescription": "navidad",
+          "discountValue": 8
+        }
+      ],
+      "subTotalAmount": 1656,
+      "tax": 314.64,
+      "totalAmount": 1970.6399999999999,
+      "statusCode": "11",
+      "paymentMethod": "Tarjeta Visa *1519",
+      "createDate": "2018-12-03T11:13:24.858Z",
+      "dueDate": "2019-01-02T11:13:24.861Z",
+      "id": 5
+    },
+    {
+      "customerName": "Vladimir Rodriguez",
+      "emailset": [
+        {
+          "customerEmail": "vladimirodriguez@gmail.com"
+        }
+      ],
+      "invoiceNumber": "50202093",
+      "invoiceMessage": "",
+      "conceptset": [
+        {
+          "itemDescription": "leche condensada",
+          "itemUnitPrice": 3699,
+          "itemQty": 3
+        }
+      ],
+      "discountset": [
+        {
+          "discountDescription": "navidad",
+          "discountValue": 10
+        }
+      ],
+      "subTotalAmount": 9987.3,
+      "tax": 1897.5869999999998,
+      "totalAmount": 11884.887,
+      "statusCode": "12",
+      "paymentMethod": "Tarjeta Visa *1519",
+      "createDate": "2018-12-03T11:16:25.320Z",
+      "dueDate": "2019-01-02T11:16:25.324Z",
+      "id": 6
+    },
+    {
+      "customerName": "Manuel Gutierrez",
+      "emailset": [
+        {
+          "customerEmail": "m.gutierrez@creativivo.com"
+        }
+      ],
+      "invoiceNumber": "123123123",
+      "invoiceMessage": "asadsasdasdas",
+      "conceptset": [
+        {
+          "itemDescription": "item ",
+          "itemUnitPrice": 12333,
+          "itemQty": 1
+        }
+      ],
+      "discountset": [
+        {
+          "discountDescription": "Descuento",
+          "discountValue": 10
+        }
+      ],
+      "subTotalAmount": 11099.7,
+      "tax": 2108.943,
+      "totalAmount": 13208.643,
+      "statusCode": "12",
+      "createDate": "2018-12-03T23:17:50.253Z",
+      "dueDate": "2019-01-02T23:17:50.256Z",
+      "id": 7
+    },
+    {
+      "customerName": "Manuel Gutierrez",
+      "emailset": [
+        {
+          "customerEmail": "m.gutierrez@creativivo.com"
+        },
+        {
+          "customerEmail": "m.gutierrez@creativivo.com"
+        }
+      ],
+      "invoiceNumber": "123123213121",
+      "invoiceMessage": "asdasdasdsadasd",
+      "conceptset": [
+        {
+          "itemDescription": "Item 1 ",
+          "itemUnitPrice": 20000,
+          "itemQty": 1
+        }
+      ],
+      "discountset": [
+        {
+          "discountDescription": "El Descuento",
+          "discountValue": 10
+        }
+      ],
+      "subTotalAmount": 18000,
+      "tax": 3420,
+      "totalAmount": 21420,
+      "statusCode": "11",
+      "createDate": "2018-12-03T23:18:38.799Z",
+      "dueDate": "2019-01-02T23:18:38.799Z",
+      "id": 8
+    },
+    {
+      "customerName": "Tiburcio",
+      "emailset": [
+        {
+          "customerEmail": "test@tiburcio.com"
+        }
+      ],
+      "invoiceNumber": "0332",
+      "invoiceMessage": "",
+      "conceptset": [
+        {
+          "itemDescription": "Producto 1",
+          "itemUnitPrice": 2000,
+          "itemQty": 2
+        }
+      ],
+      "discountset": [
+        {
+          "discountDescription": "Desc",
+          "discountValue": 760
+        }
+      ],
+      "subTotalAmount": 960,
+      "tax": 182.39999999999998,
+      "totalAmount": 1142.4,
+      "statusCode": "11",
+      "createDate": "2018-12-07T19:14:33.363Z",
+      "dueDate": "2019-01-06T19:14:33.365Z",
+      "id": 9
+    },
+    {
+      "customerName": "GEOVANNY AVILA",
+      "emailset": [
+        {
+          "customerEmail": "G.AVILA@DRUO.COM"
+        },
+        {
+          "customerEmail": "G.AVILA@DRUO.COM"
+        }
+      ],
+      "invoiceNumber": "123456AB",
+      "invoiceMessage": "TEXTO",
+      "conceptset": [
+        {
+          "itemDescription": "LECHE",
+          "itemUnitPrice": 50,
+          "itemQty": 5
+        }
+      ],
+      "discountset": [],
+      "subTotalAmount": 250,
+      "tax": 47.5,
+      "totalAmount": 297.5,
+      "statusCode": "11",
+      "createDate": "2018-12-07T21:56:31.286Z",
+      "dueDate": "2019-01-06T21:56:31.289Z",
+      "id": 10
+    },
+    {
+      "customerName": "GEOVANNY",
+      "emailset": [
+        {
+          "customerEmail": "G.AVILA@DRUO.COM"
+        }
+      ],
+      "invoiceNumber": "1213123",
+      "invoiceMessage": "TEXTO\n",
+      "conceptset": [
+        {
+          "itemDescription": "Leche",
+          "itemUnitPrice": 1,
+          "itemQty": 1
+        }
+      ],
+      "discountset": [
+        {
+          "discountDescription": "NAVI",
+          "discountValue": 20
+        }
+      ],
+      "subTotalAmount": 0.8,
+      "tax": 0.152,
+      "totalAmount": 0.952,
+      "statusCode": "11",
+      "createDate": "2018-12-07T21:59:22.935Z",
+      "dueDate": "2019-01-06T21:59:22.940Z",
+      "id": 11
+    },
+    {
+      "customerName": "Test",
+      "emailset": [
+        {
+          "customerEmail": "test@test.com"
+        }
+      ],
+      "invoiceNumber": "0001",
+      "invoiceMessage": "",
+      "conceptset": [
+        {
+          "itemDescription": "test",
+          "itemUnitPrice": 30,
+          "itemQty": 22
+        }
+      ],
+      "discountset": [],
+      "subTotalAmount": 660,
+      "tax": 125.4,
+      "totalAmount": 785.4,
+      "statusCode": "10",
+      "createDate": "2018-12-10T20:23:23.177Z",
+      "dueDate": "2019-01-09T20:23:23.179Z",
+      "id": 12
+    },
+    {
+      "customerName": "Santiago",
+      "emailset": [
+        {
+          "customerEmail": "s.escobar@druo.com"
+        }
+      ],
+      "invoiceNumber": "123123",
+      "invoiceMessage": "mensaje opcional",
+      "conceptset": [
+        {
+          "itemDescription": "asdasd",
+          "itemUnitPrice": 3000,
+          "itemQty": 1
+        }
+      ],
+      "discountset": [],
+      "subTotalAmount": 3000,
+      "tax": 570,
+      "totalAmount": 3570,
+      "statusCode": "12",
+      "createDate": "2018-12-10T22:06:50.580Z",
+      "dueDate": "2019-01-09T22:06:50.583Z",
+      "id": 13
+    },
+    {
+      "customerName": "Santiago Es",
+      "emailset": [
+        {
+          "customerEmail": "s.escobar@druo.com"
+        }
+      ],
+      "invoiceNumber": "1324",
+      "invoiceMessage": "mensaje",
+      "conceptset": [
+        {
+          "itemDescription": "item",
+          "itemUnitPrice": 2513,
+          "itemQty": 1
+        }
+      ],
+      "discountset": [],
+      "subTotalAmount": 2513,
+      "tax": 477.47,
+      "totalAmount": 2990.4700000000003,
+      "statusCode": "12",
+      "createDate": "2018-12-11T03:08:08.749Z",
+      "dueDate": "2019-01-10T03:08:08.751Z",
+      "id": 14
+    },
+    {
+      "customerName": "Santiago",
+      "emailset": [
+        {
+          "customerEmail": "s.escobar@druo.com"
+        }
+      ],
+      "invoiceNumber": "12312",
+      "invoiceMessage": "asda d assfsad gds ",
+      "conceptset": [
+        {
+          "itemDescription": "a sf sf",
+          "itemUnitPrice": 234,
+          "itemQty": 1
+        }
+      ],
+      "discountset": [],
+      "subTotalAmount": 234,
+      "tax": 44.46,
+      "totalAmount": 278.46,
+      "statusCode": "12",
+      "createDate": "2018-12-11T03:33:04.554Z",
+      "dueDate": "2019-01-10T03:33:04.557Z",
+      "id": 15
+    },
+    {
+      "customerName": "Santiago",
+      "emailset": [
+        {
+          "customerEmail": "s.escobar@druo.com"
+        }
+      ],
+      "invoiceNumber": "12312",
+      "invoiceMessage": "asda ds asdas d asd a",
+      "conceptset": [
+        {
+          "itemDescription": "asdads",
+          "itemUnitPrice": 1305,
+          "itemQty": 1
+        }
+      ],
+      "discountset": [],
+      "subTotalAmount": 1305,
+      "tax": 247.95000000000002,
+      "totalAmount": 1552.95,
+      "statusCode": "12",
+      "createDate": "2018-12-11T15:17:49.018Z",
+      "dueDate": "2019-01-10T15:17:49.021Z",
+      "id": 16
+    },
+    {
+      "customerName": "Santiago",
+      "emailset": [
+        {
+          "customerEmail": "s.escobar@druo.com"
+        }
+      ],
+      "invoiceNumber": "12312",
+      "invoiceMessage": "asdas",
+      "conceptset": [
+        {
+          "itemDescription": "asdasd",
+          "itemUnitPrice": 123123,
+          "itemQty": 10
+        },
+        {
+          "itemDescription": "asda da as",
+          "itemUnitPrice": 345,
+          "itemQty": 16
+        },
+        {
+          "itemDescription": "12 as  asd",
+          "itemUnitPrice": 234,
+          "itemQty": 100
+        }
+      ],
+      "discountset": [],
+      "subTotalAmount": 1260150,
+      "tax": 239428.5,
+      "totalAmount": 1499578.5,
+      "statusCode": "11",
+      "createDate": "2018-12-12T22:18:38.537Z",
+      "dueDate": "2019-01-11T22:18:38.538Z",
+      "id": 17
+    },
+    {
+      "customerName": "Santiago",
+      "emailset": [
+        {
+          "customerEmail": "s.escobar@druo.com"
+        }
+      ],
+      "invoiceNumber": "9998",
+      "invoiceMessage": "Añade un mensaje a tu cliente ",
+      "conceptset": [
+        {
+          "itemDescription": "item",
+          "itemUnitPrice": 2500,
+          "itemQty": 6
+        }
+      ],
+      "discountset": [],
+      "subTotalAmount": 15000,
+      "tax": 2850,
+      "totalAmount": 17850,
+      "statusCode": "11",
+      "createDate": "2018-12-12T22:39:46.407Z",
+      "dueDate": "2019-01-11T22:39:46.410Z",
+      "id": 18
+    },
+    {
+      "customerName": "Santiago",
+      "emailset": [
+        {
+          "customerEmail": "s.escobar@druo.com"
+        }
+      ],
+      "invoiceNumber": "8756",
+      "invoiceMessage": "mensjae",
+      "conceptset": [
+        {
+          "itemDescription": "item",
+          "itemUnitPrice": 5200,
+          "itemQty": 698
+        }
+      ],
+      "discountset": [],
+      "subTotalAmount": 3629600,
+      "tax": 689624,
+      "totalAmount": 4319224,
+      "statusCode": "11",
+      "createDate": "2018-12-12T22:40:32.854Z",
+      "dueDate": "2019-01-11T22:40:32.854Z",
+      "id": 19
+    }
+  ]
+}

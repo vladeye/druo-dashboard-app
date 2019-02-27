@@ -1,0 +1,25 @@
+{
+	"Auth": {
+    "Email": "Tú Email",
+    "Password": "Tú Clave",
+    "ConfirmPassword": "Confirmar tú Clave",
+    "EmailFormatError": "Tú Email no tiene el formato correcto",
+    "EmailRequiredError": "El Email es requerido",
+    "PasswordRequiredError": "Tú clave es requerida",
+    "ConfirmPasswordError": "Tús claves no son iguales",
+    "PasswordLengthError": "Tús claves deben contener al menos seis caracteres",
+
+    "Login": {
+      "Title": "Inicia Sesión",
+      "Submit": "Inicia Sesión",
+      "RegisterLink": "Registrate"
+    },
+
+    "Register": {
+      "Title": "Sign Up",
+      "Submit": "Create account",
+      "Back": "Go Back",
+      "SuccessMessage": "Your account has been successfully created"
+    }
+  }
+}

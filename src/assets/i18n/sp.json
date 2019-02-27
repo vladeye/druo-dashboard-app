@@ -1,0 +1,110 @@
+{
+  "MENU": {
+    "DASHBOARD": "Inicio",
+    "REPORTS": "Reportes",
+    "CLIENTS": "Clientes",
+    "TRANSACTIONS": "Transacciones",
+    "INVOICES": "Facturas",
+    "CONFIGURATIONS": "Configuración",
+    "SUPPORT": "Soporte"
+  },
+  "ServerError401": "Acceso no permitido. Por favor ingresa.",
+  "ServerError403": "Access forbidden. Please provide correct credentials",
+  "ServerError404": "An error occurred. Please contact your administrator",
+  "ServerError500": "An error occurred. Please contact your administrator",
+  "SuccessNotificationTitle": "Success",
+  "ErrorNotificationTitle": "Error",
+  "InfoNotificationTitle": "Info",
+  "WarningNotificationTitle": "Warning",
+  "SaveBtn": "Save",
+  "EditBtn": "Edit",
+  "CancelBtn": "Cancel",
+  "BackBtn": "Back",
+  "GridEmptyLabel": "No available items",
+
+  "ConfirmDialog": {
+    "Title": "Please confirm",
+    "Content": "Do you want to leave without saving the changes?",
+    "SubmitBtn": "Yes",
+    "CancelBtn": "No"
+  },
+  "Auth": {
+    "Email": "Tú Email",
+    "Password": "Tú Clave",
+    "ConfirmPassword": "Confirma tú Clave",
+    "EmailFormatError": "Tú Email no tiene formato valido",
+    "EmailRequiredError": "Tú Email es requerido",
+    "PasswordRequiredError": "Tú Clave es requerida",
+    "ConfirmPasswordError": "Tús claves son diferentes",
+    "PasswordLengthError": "Tús claves deben contener al menos seis caracteres",
+
+    "Login": {
+      "Title": "Ingresa",
+      "Submit": "Ingresa",
+      "RegisterLink": "Registrate"
+    },
+
+    "Register": {
+      "Title": "Registrate",
+      "Submit": "Crea una cuenta",
+      "Back": "Ve atrás",
+      "SuccessMessage": "Tú cuenta ha sido creada exitosamente"
+    }
+  },
+  "Invoices": {
+    "Title": "Facturas",
+    "Status": {
+      "DRAFT": "Borrador",
+      "CREATED": "Creada",
+      "SENT": "Enviada",
+      "DELIVERED": "Entregada",
+      "DELIVERY_FAILED": "Entrega falló",
+      "MARKED_AS_SPAM": "Marcada como correo no deseado",
+      "OPENED": "Abierta",
+      "CLICKED": "Hecho clic",
+      "REMINDER_SENT": "Recordatorio enviado",
+      "INVOICE_OVERDUE": "Factura vencida",
+      "PAID": "Pagada",
+      "PARTIAL_PAYMENT": "Pago parcial",
+      "PAYMENT_PROCESSING" : "Procesando el pago",
+      "PARTIAL_PAYMENT_PROCESSING": "Procesando pago parcial",
+      "PAYMENT_DECLINED": "Pago declinado",
+      "PARTIAL_PAYMENT_DECLINED": "Pago parcial declinado",
+      "REFUND_REQUESTED" : "Reembolso requerido",
+      "PARTIAL_REFUND_REQUESTED": "Reembolso parcial requerido",
+      "REFUND_PROCESSED": "Reembolso procesado",
+      "PARTIAL_REFUND_PROCESSED": "Reembolso parcial procesado",
+      "REFUND_DECLINED": "Reembolso declinado",
+      "PARITAL_REFUND_DECLINED": "Reembolso parcial declinado",
+      "INVOICE_ANNULLED": "Factura anulada",
+      "NA": "NA"
+    }
+
+  },
+  "ProductDetails": {
+    "Title": "Product details",
+    "Name": "Name",
+    "SerialNumber": "Serial Number",
+    "Category": "Category",
+    "Description": "Description",
+    "WarrantyExpiration": "Warranty Expiration",
+    "Price": "Price",
+    "Currency": "Currency"
+  },
+  "Sidebar": {
+    "Menu": "Menu",
+    "InvoicesItem": "Facturas"
+  },
+
+  "ProfileActionBar": {
+    "Logout": "Logout"
+  },
+
+  "PageNotFound": {
+    "Title": "Ooops, Pagina no encontrada",
+    "Subtitle": "Por favor, devuelvete a la página anterior",
+    "Button": "Vuelve atrás"
+  },
+
+  "Title": "La aplicación de druo dashboard"
+}

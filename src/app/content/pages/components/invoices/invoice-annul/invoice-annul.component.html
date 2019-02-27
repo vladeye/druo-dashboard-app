@@ -1,0 +1,22 @@
+<div  id="m_modal-2" class="modal-md">
+    <div class="modal-content">
+      <div class="modal-header blue-row regular-header text-center" style="display: block;">
+        <i class="flaticon-exclamation"></i>
+        <h2 class="m--margin-bottom-30 m--margin-top-10">¿Está seguro que desea anular esta factura?</h2>
+        <span class="m--margin-top-10">Si anula esta factura, no podrá tener registro de los pagos elaborados en esta factura y si desea hacer futuros cobros en ella, deberá crear una nueva. Esta acción no se puede deshacer.</span>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <button type="button" class="btn btn-secondary btn-lg m--margin-right-10" data-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-secondary btn-lg m--margin-right-10" data-toggle="modal" data-target="#m_modal-4" (click)="openGenerateRefundDialog()">
+            Reembolsar y anular
+          </button>
+          <button (click)="openConfirmation()" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#m_modal-5">
+            Solo anular
+          </button>
+        </div>
+      </div>
+    </div>
+</div>

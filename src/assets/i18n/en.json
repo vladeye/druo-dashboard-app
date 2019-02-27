@@ -1,0 +1,108 @@
+{
+  "MENU": {
+    "DASHBOARD": "Home",
+    "REPORTS": "Reports",
+    "CLIENTS": "Clients",
+    "TRANSACTIONS": "Transactions",
+    "INVOICES": "Invoices",
+    "CONFIGURATIONS": "Configuration",
+    "SUPPORT": "Support"
+  },
+  "ServerError401": "Access not allowed. Please login.",
+  "ServerError403": "Access forbidden. Please provide correct credentials",
+  "ServerError404": "An error occurred. Please contact your administrator",
+  "ServerError500": "An error occurred. Please contact your administrator",
+  "SuccessNotificationTitle": "Success",
+  "ErrorNotificationTitle": "Error",
+  "InfoNotificationTitle": "Info",
+  "WarningNotificationTitle": "Warning",
+  "SaveBtn": "Save",
+  "EditBtn": "Edit",
+  "CancelBtn": "Cancel",
+  "BackBtn": "Back",
+  "GridEmptyLabel": "No available items",
+
+  "ConfirmDialog": {
+    "Title": "Please confirm",
+    "Content": "Do you want to leave without saving the changes?",
+    "SubmitBtn": "Yes",
+    "CancelBtn": "No"
+  },
+  "Auth": {
+    "Email": "Email",
+    "Password": "Password",
+    "ConfirmPassword": "Confirm Password",
+    "EmailFormatError": "Email is not in valid format",
+    "EmailRequiredError": "Email is required",
+    "PasswordRequiredError": "Password is required",
+    "ConfirmPasswordError": "Passwords mismatch",
+    "PasswordLengthError": "Passwords must contain at least 6 characters",
+
+    "Login": {
+      "Title": "Login",
+      "Submit": "Login",
+      "RegisterLink": "Sign Up"
+    },
+
+    "Register": {
+      "Title": "Sign Up",
+      "Submit": "Create account",
+      "Back": "Go Back",
+      "SuccessMessage": "Your account has been successfully created"
+    }
+  },
+  "Invoices": {
+    "Title": "Invoices",
+    "Status": {
+      "DRAFT": "Draft",
+      "CREATED": "Created",
+      "SENT": "Sent",
+      "DELIVERED": "Delivered",
+      "DELIVERY_FAILED": "Delivery failed",
+      "MARKED_AS_SPAM": "Marked as spam",
+      "OPENED": "Opened",
+      "CLICKED": "Clicked",
+      "REMINDER_SENT": "Reminder sent",
+      "INVOICE_OVERDUE": "Invoice overdue",
+      "PAID": "Paid",
+      "PARTIAL_PAYMENT": "Partial payment",
+      "PAYMENT_PROCESSING" : "Payment processing",
+      "PARTIAL_PAYMENT_PROCESSING": "Partial payment processing",
+      "PAYMENT_DECLINED": "Payment declined",
+      "PARTIAL_PAYMENT_DECLINED": "Partial payment declined",
+      "REFUND_REQUESTED" : "Refund requested",
+      "PARTIAL_REFUND_REQUESTED": "Partial refund requested",
+      "REFUND_PROCESSED": "Refund processed",
+      "PARTIAL_REFUND_PROCESSED": "Partial refund processed",
+      "REFUND_DECLINED": "Refund declined",
+      "PARITAL_REFUND_DECLINED": "Partial refund declined",
+      "INVOICE_ANNULLED": "Invoice annulled",
+      "NA": "NA"
+    }
+  },
+  "ProductDetails": {
+    "Title": "Product details",
+    "Name": "Name",
+    "SerialNumber": "Serial Number",
+    "Category": "Category",
+    "Description": "Description",
+    "WarrantyExpiration": "Warranty Expiration",
+    "Price": "Price",
+    "Currency": "Currency"
+  },
+  "Sidebar": {
+    "Menu": "Menu",
+    "InvoicesItem": "Invoice"
+  },
+
+  "ProfileActionBar": {
+    "Logout": "Logout"
+  },
+
+  "PageNotFound": {
+    "Title": "Ooops, Page Not Found",
+    "Subtitle": "Please, return to the previous page",
+    "Button": "Go back"
+  },
+  "Title": "druo dashboard's application"
+}

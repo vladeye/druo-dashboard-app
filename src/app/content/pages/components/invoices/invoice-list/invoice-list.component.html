@@ -1,0 +1,201 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+  <!-- BEGIN: Subheader -->
+  <div class="m-subheader ">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h1 class="m-subheader__title m-subheader__title--separator">
+          Facturas
+        </h1>
+        <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+          <li class="m-nav__item m-nav__item--home">
+            <a href="../" class="m-nav__link m-nav__link--icon">
+              <i class="m-nav__link-icon la la-home"></i>
+            </a>
+          </li>
+          <li class="m-nav__separator">
+            -
+          </li>
+          <li class="m-nav__item">
+            <a href="" class="m-nav__link">
+              <span class="m-nav__link-text">
+                Facturas
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
+          m-dropdown-toggle="hover" aria-expanded="true">
+          <a href="#" class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
+            <span>
+              <i class="la la-cloud-upload"></i>
+              <span>
+                Importar datos
+              </span>
+            </span>
+          </a>
+          <a href="#" class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
+            <span>
+              <i class="fa flaticon-download"></i>
+              <span>
+                Exportar datos
+              </span>
+            </span>
+          </a>
+          <a routerLink="create" class="btn btn-info m-btn m-btn--icon m-btn--wide m-btn--md">
+            <span>
+              <i class="fa flaticon-plus"></i>
+              <span>
+                Crear Factura
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-portlet m-portlet--mobile">
+    <mat-tab-group>
+      <mat-tab label="Todas las facturas">
+        <div class="example-header">
+          <div class="col-sm-3 m-padding-left-0">
+            <div class="m-form__group m-form__group--inline">
+              <div class="m-form__label m--margin-right-10">
+                <label>
+                  Estado:
+                </label>
+              </div>
+              <mat-form-field>
+                <mat-select placeholder="Todos">
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{ food.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-sm-3 m-padding-left-0">
+            <div class="m-form__group m-form__group--inline">
+              <div class="m-form__label m--margin-right-10">
+                <label>
+                  Tipo:
+                </label>
+              </div>
+              <mat-form-field>
+                <mat-select placeholder="Todos">
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{ food.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-sm-3 m-padding-left-0">
+            <span class="m-input-icon__icon m-input-icon__icon--left">
+              <span>
+                <i class="la la-search"></i>
+              </span>
+            </span>
+            <mat-form-field class="field-search">
+              <input matInput (keyup)="applyFilter($event.target.value)" class="m--margin-left-20">
+              <mat-placeholder class="placeholder">Buscar</mat-placeholder>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="example-container mat-elevation-z8">
+          <div class="example-loading-shade" *ngIf="(invoicesSandbox.invoicesLoading$ | async) && (!invoicesSandbox.invoicesLoaded$ | async)">
+            <mat-spinner *ngIf="(invoicesSandbox.invoicesLoading$ | async) && (!invoicesSandbox.invoicesLoaded$ | async)"></mat-spinner>
+          </div>
+          <app-scroll-container [more]="hasMore()" [scrollOffset]="100" [scrollDelay]="100" (scrolled)="handleScroll($event)"
+            [class.full]="full" [class.part]="!full">
+            <mat-table [dataSource]="dataSource" matSort>
+              <!-- ID Column -->
+              <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> # </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+              </ng-container>
+              <!-- Due Date Column -->
+              <ng-container matColumnDef="due_date">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Vencimiento </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.dueDate | date:'dd MMM, y'}} </mat-cell>
+              </ng-container>
+              <!-- Date Column -->
+              <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd MMM, y'}} </mat-cell>
+              </ng-container>
+              <!-- Status Column -->
+              <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+                <mat-cell *matCellDef="let row"> <span class="m-badge m-badge--wide" [style.color]="setColorStatus(row.statusCode)"
+                    [style.background-color]="setBackgroundColorStatus(row.statusCode)">{{
+                    setTranslateLabelStatus(row.statusCode)| translate }} </span></mat-cell>
+              </ng-container>
+              <!-- Client Column -->
+              <ng-container matColumnDef="customer_name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.customerName}} </mat-cell>
+              </ng-container>
+              <!-- Amount Column -->
+              <ng-container matColumnDef="total_amount">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Valor </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{ row.totalAmount | currency:'COP':'symbol-narrow':'1.0'}} </mat-cell>
+              </ng-container>
+              <!-- Type Column -->
+              <ng-container matColumnDef="type">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </mat-header-cell>
+                <mat-cell *matCellDef="let row"> Una vez </mat-cell>
+              </ng-container>
+              <!-- Actions Column -->
+              <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef> Acción </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <a routerLink="{{row.id}}/detail">Enviar recibo</a>
+                </mat-cell>
+              </ng-container>
+              <!-- Details Column -->
+              <ng-container matColumnDef="details">
+                <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <a routerLink="{{row.id}}/detail" class="view-more"><i class="fa fa-angle-right"></i></a>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;">
+              </mat-row>
+            </mat-table>
+          </app-scroll-container>
+        </div>
+      </mat-tab>
+      <!--
+        <mat-tab>
+          <ng-template mat-tab-label>
+            Recurrentes
+          </ng-template>
+          <h1>Terrible sushi restaurants</h1>
+          <p>...</p>
+        </mat-tab>-->
+    </mat-tab-group>
+  </div>
+  <div class="m-portlet">
+    <div class="m-portlet__body text-center m--padding-top-70 m--padding-bottom-70 m--padding-left-100 m--padding-right-100 empty-invoices">
+      <img class="m--margin-bottom-30" src="https://s3.us-east-2.amazonaws.com/druo.img/img/ico-invoices-big_2x.jpg"
+        width="150" height="150">
+      <h2 class="m--margin-bottom-30">Crea tu primera factura</h2>
+      <h3>Envía cobros online y recibe el pago al instante.</h3>
+      <a routerLink="create" class="btn btn-lg btn-info m-btn m-btn--icon m-btn--wide m-btn--lg m--margin-bottom-50 m--margin-top-50">
+        <span>
+          <i class="fa flaticon-plus"></i>
+          <span>
+            Crear Factura
+          </span>
+        </span>
+      </a>
+      <p>El envío de las facturas es gratis, para siempre. Solo pagas una comisión cuando tus clientes pagan con una
+        tarjeta de crédito o débito.</p>
+      <a href="#">Ofrecemos tarifas a la medida de tu negocio.</a>
+    </div>
+  </div>
+</div>

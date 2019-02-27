@@ -1,0 +1,116 @@
+<div id="m_modal-4" class="modal-md">
+  <div class="modal-header blue-row irregular-header text-center" style="display: block;">
+    <p>Monto total de transacción: $450,000</p>
+    <h3 class="m--margin-bottom-15">Monto a reembolsar:</h3>
+    <input formControlName="refundAmount" class="bignumber blue-modal" id="refundAmount" type="text"
+        placeholder="{{0 | currency:'COP':'symbol-narrow':'1.0'}}">
+    <p class="m--margin-top-20">El valor máximo que puedes reembolsar es $450,000</p>
+  </div>
+  <div class="modal-body m--padding-bottom-20">
+    <label for="example_input_full_name">
+      Método de reembolso:
+    </label>
+    <div class="row m--margin-bottom-20">
+      <div class="col-md-4">
+        <label class="m-option">
+          <span class="m-option__control">
+            <span class="m-radio m-radio--info m-radio--check-bold">
+              <input type="radio" name="refundMethod" value="cash">
+              <span></span>
+            </span>
+          </span>
+          <span class="m-option__label">
+            <span class="m-option__head">
+              <span class="m-option__title">
+                Efectivo
+              </span>
+            </span>
+            <span class="m-option__body">
+              Se reembolsarán $200,000 en efectivo a tu cliente.
+            </span>
+          </span>
+        </label>
+      </div>
+      <div class="col-md-4">
+        <label class="m-option">
+          <span class="m-option__control">
+            <span class="m-radio m-radio--info m-radio--check-bold">
+              <input type="radio" name="refundMethod" value="credit-card">
+              <span></span>
+            </span>
+          </span>
+          <span class="m-option__label">
+            <span class="m-option__head">
+              <span class="m-option__title">
+                Tarjeta
+              </span>
+            </span>
+            <span class="m-option__body">
+              Se reembolsarán $200,000 a la tarjeta Visa *9359.
+            </span>
+          </span>
+        </label>
+      </div>
+      <div class="col-md-4">
+        <label class="m-option">
+          <span class="m-option__control">
+            <span class="m-radio m-radio--info m-radio--check-bold">
+              <input type="radio" name="refundMethod" value="store-coupon">
+              <span></span>
+            </span>
+          </span>
+          <span class="m-option__label">
+            <span class="m-option__head">
+              <span class="m-option__title">
+                Bono en tienda
+              </span>
+            </span>
+            <span class="m-option__body">
+              Se le otorgará un bono de $200,000 a tu cliente para que haga compras en la tienda.
+            </span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <label>
+      Motivo de reembolso
+    </label>
+    <div class="m-radio-inline">
+      <label class="m-radio m-radio--info m-radio--check-bold">
+        <input type="radio" name="refundReason" value="damaged">
+        Producto dañado
+        <span></span>
+      </label>
+      <label class="m-radio m-radio--info m-radio--check-bold">
+        <input type="radio" name="refundReason" value="late">
+        Entrega tardia
+        <span></span>
+      </label>
+      <label class="m-radio m-radio--info m-radio--check-bold">
+        <input type="radio" name="refundReason" value="wrong-price">
+        Producto incorrecto
+        <span></span>
+      </label>
+      <label class="m-radio m-radio--info m-radio--check-bold">
+        <input type="radio" name="refundReason" value="fraud">
+        Fraude
+        <span></span>
+      </label>
+      <label class="m-radio m-radio--info m-radio--check-bold">
+        <input type="radio" name="refundReason" value="low-quality">
+        Baja Calidad
+        <span></span>
+      </label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="text-center">
+      <button type="button" class="btn btn-secondary btn-lg m--margin-right-10" data-dismiss="modal">
+        Cancelar
+      </button>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-dismiss="modal" data-target="#m_modal-5">
+        Reembolsar y anular
+      </button>
+    </div>
+  </div>
+</div>

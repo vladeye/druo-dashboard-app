@@ -1,0 +1,488 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+  <!-- BEGIN: Subheader -->
+  <div class="m-subheader ">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h1 class="m-subheader__title m-subheader__title--separator">
+          {{ title }}
+        </h1>
+        <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+          <li class="m-nav__item m-nav__item--home">
+            <a href="../../" class="m-nav__link m-nav__link--icon">
+              <i class="m-nav__link-icon la la-home"></i>
+            </a>
+          </li>
+          <li class="m-nav__separator">
+            -
+          </li>
+          <li class="m-nav__item">
+            <a href="../" class="m-nav__link">
+              <span class="m-nav__link-text">
+                Facturas
+              </span>
+            </a>
+          </li>
+          <li class="m-nav__separator">
+            -
+          </li>
+          <li class="m-nav__item">
+            <a href="" class="m-nav__link">
+              <span class="m-nav__link-text">
+                Crear Factura
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <form #form="ngForm" [formGroup]="createInvoiceForm" class="m-form m-form--label-align-left- m-form--state-" id="m_form"
+        novalidate (ngSubmit)="save(createInvoiceForm.value, createInvoiceForm.valid,$event)">
+    <div class="row">
+      <div class="col-lg-12">
+        <!--begin::Portlet-->
+        <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-progress">
+              <!-- here can place a progress bar-->
+            </div>
+            <div class="m-portlet__head-wrapper">
+              <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                  <h3 class="m-portlet__head-text">
+                    Borrador factura
+                  </h3>
+                </div>
+              </div>
+              <div class="m-portlet__head-tools">
+                <a href="#" class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
+                  <span>
+                    <i class="fa flaticon-close"></i>
+                    <span>
+                      Cancelar
+                    </span>
+                  </span>
+                </a>
+                <a href="../previsualizar/" class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-5">
+                  <span>
+                    <i class="fa flaticon-visible"></i>
+                    <span>
+                      Previsualizar
+                    </span>
+                  </span>
+                </a>
+                <button type="submit" class="btn btn-info m-btn m-btn--icon m-btn--wide m-btn--md" [disabled]="!createInvoiceForm.valid">
+                  <span>
+                    <i class="fa flaticon-paper-plane"></i>
+                    <span>
+                      Crear y enviar
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="m-portlet__body formu">
+            <!--begin: Form Body -->
+            <div class="m-portlet__body">
+              <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                  <div class="m-form__section m-form__section--first">
+                    <div class="m-form__heading">
+                      <h2 class="m-form__heading-title">
+                        Detalles de Cliente
+                      </h2>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-xl-2 col-lg-2 col-form-label">
+                        <h4>Cliente:</h4>
+                      </label>
+                      <div class="col-xl-10 col-lg-10">
+                        <div class="m-typeahead">
+                          <input formControlName="customerName" class="form-control m-input m--margin-bottom-20" id="customerName"
+                                 type="text" placeholder="Escribe el nombre del cliente...">
+                        </div>
+                      </div>
+                      <label class="col-xl-2 col-lg-2 col-form-label">
+                        <h4>Email:</h4>
+                      </label>
+                      <div formArrayName="emailset" id="emailset" class="col-xl-10 col-lg-10">
+                        <div *ngFor="let address_ of createInvoiceForm.controls['emailset'].controls; let i=index">
+                          <div class="panel panel-info" formGroupName="{{i}}">
+                            <div class="m-typeahead repeat-email">
+                              <input formControlName="customerEmail" class="form-control m-input m--margin-bottom-10 "
+                                     id="customerEmail" type="text" placeholder="Escribe el email del cliente...">
+                              <a *ngIf="createInvoiceForm.controls['emailset'].controls.length > 1" (click)="removeEmail(i)"><i
+                                class="la la-times-circle m--font-danger"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                        <button type="button" class="btn btn-info m-btn m-btn--wide " (click)="addEmail()">
+                          Añadir otro email
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-separator m-separator--lg"></div>
+                  <div class="m-form__section m-form__section--first">
+                    <div class="m-form__heading">
+                      <h2 class="m-form__heading-title">
+                        Identificación de factura
+                      </h2>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-xl-2 col-lg-2 col-form-label">
+                        <h4>N° de factura:</h4>
+                      </label>
+                      <div class="col-lg-10">
+                        <input formControlName="invoiceNumber" type="text" class="form-control m-input" placeholder=""
+                               id="invoiceNumber" value="{{ invoicesSandbox.maxValueInvoice$ | async }}">
+                      </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <div class="col-lg-12 m-form__group-sub">
+                        <label class="form-control-label">
+                          <h4>Añade un mensaje a tu cliente (opcional)</h4>
+                        </label>
+                        <textarea type="text" formControlName="invoiceMessage" class="form-control m-input" placeholder=""
+                                  value="mensaje" id="invoiceMessage"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-separator m-separator--lg"></div>
+                  <div class="m-form__section">
+                    <div class="m-form__heading">
+                      <h2 class="m-form__heading-title">
+                        Concepto de Factura
+                      </h2>
+                    </div>
+                    <div class="form-group m-form__group invoice-table">
+                      <div class="col-lg-12 m-form__group-sub">
+                        <div style="border-top-left-radius: 4px;border-top-right-radius: 4px;">
+                          <div class="row div-table-header">
+                            <div class="col-5">
+                              <h4>Descripción / Item</h4>
+                            </div>
+                            <div class="col-2 m-padding-right-0">
+                              <h4>Precio Unidad</h4>
+                            </div>
+                            <div class="col-2">
+                              <h4>Cantidad</h4>
+                            </div>
+                            <div class="col-2">
+                              <h4>Total</h4>
+                            </div>
+                            <div class="col-1"></div>
+                          </div>
+                          <div formArrayName="conceptset" id="conceptset" class="tab-pane row repeat-table">
+                            <div *ngFor="let concept_ of createInvoiceForm.controls['conceptset'].controls; let i=index"
+                                 class="bordered-row">
+                              <div formGroupName="{{i}}" class="row">
+                                <div class="col-5">
+                                  <input formControlName="itemDescription" class="form-control m-input" id="itemDescription"
+                                         type="text" placeholder="Descripción">
+                                </div>
+                                <div class="col-2">
+                                  <input formControlName="itemUnitPrice" class="form-control m-input" id="itemUnitPrice"
+                                         type="text" (keyup)="currencyInputChanged($event)" placeholder="{{0 | currency:'COP':'symbol-narrow':'1.0'}}">
+                                </div>
+                                <div class="col-2">
+                                  <input formControlName="itemQty" class="form-control m-input" id="itemQty" type="number"
+                                         placeholder="Cantidad">
+                                </div>
+                                <div class="col-2">
+                                  <input formControlName="itemTotalPrice" class="form-control m-input" id="itemTotalPrice">
+                                </div>
+                                <div class="col-1">
+                                  <a *ngIf="createInvoiceForm.controls['conceptset'].controls.length > 1" (click)="removeConcept(i)"><i
+                                    class="la la-times-circle m--font-danger"></i></a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="bordered-row m-padding-15">
+                              <a class="m-link m-link--light m-login__account-link m--font-info" (click)="addConcept()">Añadir
+                                nuevo concepto</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div formArrayName="discountset" id="discountset" class="tab-pane repeat-discount">
+                          <div *ngFor="let discount_ of createInvoiceForm.controls['discountset'].controls; let i=index">
+                            <div formGroupName="{{i}}" class="row">
+                              <div class="col-7 col-md-4 offset-md-5 bordered-row m-border-right-0">
+                                <input formControlName="discountDescription" class="form-control m-input" id="discountDescription"
+                                       type="text" placeholder="Descripción">
+                              </div>
+                              <div class="col-4 col-md-2 m--align-right bordered-row m-border-left-0 m-border-right-0">
+                                <input formControlName="discountValue" class="form-control m-input" id="discountValue"
+                                       type="number" placeholder="Value">
+                              </div>
+                              <div class="col-1 m--align-right bordered-row m-border-left-0">
+                                <a *ngIf="createInvoiceForm.controls['discountset'].controls.length > 0" (click)="removeDiscount(i)"><i
+                                  class="la la-times-circle m--font-danger"></i></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-7 col-12 offset-md-5 bordered-row m-padding-15"><a class="m-link m-link--light m-login__account-link m--font-info"
+                                                                                                (click)="addDiscount()">Añadir
+                            descuento</a></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2 col-4 offset-md-5 bordered-row m-padding-15 m-border-right-0">Subtotal</div>
+                          <div class="col-md-4 col-7 m--align-right bordered-row m-padding-15 m-border-left-0 m-border-right-0">{{
+                            subTotalSum - subTotalSumDiscount | currency:'COP':'symbol-narrow':'1.0'}}
+                            <input formControlName="subTotalAmount" id="subTotalAmount" type="hidden"></div>
+                          <div class="col-1 m--align-right bordered-row m-border-left-0"></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2 col-4 offset-md-5 bordered-row m-padding-15 m-border-right-0">IVA {{
+                            taxPercentage }}%</div>
+                          <div class="col-md-4 col-7 m--align-right bordered-row m-padding-15 m-border-left-0 m-border-right-0"> ({{
+                            tax - taxDiscount | currency:'COP':'symbol-narrow':'1.0'}})
+                            <input formControlName="tax" id="tax" type="hidden"></div>
+                          <div class="col-1 m--align-right bordered-row m-border-left-0"></div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-2 col-4 offset-md-5 bordered-row m-padding-15 m-border-right-0 total-cell"
+                               style="padding: 23px 15px!important;">Total</div>
+                          <div class="col-md-4 col-7 m--align-right total m--font-success mediumnumber bordered-row m-padding-15 m-border-left-0 m-border-right-0  total-cell">{{
+                            totalSum - totalSumDiscount | currency:'COP':'symbol-narrow':'1.0'}}
+                            <input formControlName="totalAmount" id="totalAmount" type="hidden"></div>
+                          <div class="col-1 m--align-right bordered-row m-border-left-0 total-cell"></div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-separator m-separator--lg"></div>
+                  <div class="m-form__section">
+                    <div class="m-form__heading">
+                      <h2 class="m-form__heading-title">
+                        Opciones de Factura
+                      </h2>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-xl-2 col-lg-2 col-form-label">
+                        <h4>Fecha:</h4>
+                      </label>
+                      <div class="col-xl-10 col-lg-10">
+                        <div class="form-group m-form__group">
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <label class="m-option">
+                                <span class="m-option__control">
+                                  <span class="m-radio m-radio--brand m-radio--check-bold">
+                                    <input type="radio" name="m_option_1" value="1" checked>
+                                    <span></span>
+                                  </span>
+                                </span>
+                                <span class="m-option__label">
+                                  <span class="m-option__head">
+                                    <span class="m-option__title">
+                                      Una vez
+                                    </span>
+                                  </span>
+                                  <span class="m-option__body">
+                                    Al seleccionar esta opción enviarás esta factura una única vez.<br><br>
+                                  </span>
+                                </span>
+                              </label>
+                            </div>
+                            <!--<div class="col-lg-6">
+                              <label class="m-option">
+                                <span class="m-option__control">
+                                  <span class="m-radio m-radio--brand m-radio--check-bold">
+                                    <input type="radio" name="m_option_1" value="1">
+                                    <span></span>
+                                  </span>
+                                </span>
+                                <span class="m-option__label">
+                                  <span class="m-option__head">
+                                    <span class="m-option__title">
+                                      Recurrente
+                                    </span>
+                                  </span>
+                                  <span class="m-option__body">
+                                    Al seleccionar esta opción enviarás esta factura en repetidas ocasiones por el
+                                    tienpo que especifiques
+                                  </span>
+                                </span>
+                              </label>
+                            </div>-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--
+                    <div class="form-group m-form__group row">
+                      <label class="col-xl-2 col-lg-2 col-form-label">
+                        <h4>Emitir cada:</h4>
+                      </label>
+                      <div class="col-xl-2 col-lg-2">
+                        <div class="m-typeahead">
+                          <select class="form-control m-input m-input--square" id="exampleSelect1">
+                            <option>
+                              1
+                            </option>
+                            <option>
+                              2
+                            </option>
+                            <option>
+                              3
+                            </option>
+                            <option>
+                              6
+                            </option>
+                            <option>
+                              12
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-2">
+                        <div class="m-typeahead">
+                          <select class="form-control m-input m-input--square" id="exampleSelect1">
+                            <option>
+                              semana
+                            </option>
+                            <option>
+                              mes
+                            </option>
+                            <option>
+                              año
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-xl-2 col-lg-2 col-form-label">
+                        <h4>Terminar:</h4>
+                      </label>
+                      <div class="col-xl-4 col-lg-4">
+                        <div class="m-typeahead">
+                          <select class="form-control m-input m-input--square" id="exampleSelect1">
+                            <option>
+                              Nunca
+                            </option>
+                            <option>
+                              1 semana
+                            </option>
+                            <option>
+                              1 mes
+                            </option>
+                            <option>
+                              1 año
+                            </option>
+                            <option>
+                              Escoger rango
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    -->
+                    <div class="form-group m-form__group row">
+                      <label class="col-xl-2 col-lg-2 col-form-label">
+                        <h4>Fecha de envío:</h4>
+                      </label>
+                      <div class="col-xl-5 col-lg-5">
+                        <div class="m-typeahead">
+                          <select class="form-control m-input m-input--square" id="exampleSelect1">
+                            <option>
+                              Inmediatamente
+                            </option>
+                            <option>
+                              1 semana
+                            </option>
+                            <option>
+                              1 mes
+                            </option>
+                            <option>
+                              1 año
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-xl-2 col-lg-2 col-form-label">
+                        <h4>Plazo de pago:</h4>
+                      </label>
+                      <div class="col-xl-5 col-lg-5">
+                        <div class="m-typeahead">
+                          <select class="form-control m-input m-input--square" id="exampleSelect1">
+                            <option>
+                              Al recibir
+                            </option>
+                            <option>
+                              1 semana
+                            </option>
+                            <option>
+                              1 mes
+                            </option>
+                            <option>
+                              1 año
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-separator m-separator--lg"></div>
+                  <div class="m-form__section">
+                    <div class="m-form__heading">
+                      <h2 class="m-form__heading-title">
+                        Información adicional
+                      </h2>
+                    </div>
+                    <div class="form-group m-form__group m--margin-bottom-20">
+                      <p class="m--margin-bottom-20">La información que indiques acá será la que aparecerá en el pie de
+                        página de tu factura. Puedes incluir información como tus datos bancarios y alguna nota
+                        adicional para que tu cliente haga el pago de esta factura.</p>
+                      <textarea type="text" name="invoice-additional" class="form-control m-input" value="invoice-additional"
+                                placeholder="Incluye aquí información como términos y condiciones de la factura, información bancaria, e información de contacto. Esta información saldrá en el pie de página de la factura."></textarea>
+                    </div>
+                  </div>
+                  <div class="m-form__section">
+                    <div class="form-group m-form__group">
+                      <button type="submit" class="btn btn-info m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10"
+                              [disabled]="!createInvoiceForm.valid">
+                        <span>
+                          <i class="fa flaticon-paper-plane"></i>
+                          <span>
+                            Crear y enviar
+                          </span>
+                        </span>
+                      </button>
+                      <a href="#" class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
+                        <span>
+                          <i class="fa flaticon-visible"></i>
+                          <span>
+                            Previsualizar
+                          </span>
+                        </span>
+                      </a>
+                      <a href="#" class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
+                        <span>
+                          <i class="la la-save"></i>
+                          <span>
+                            Guardar como borrador
+                          </span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end::Portlet-->
+    </div>
+  </form>
+</div>

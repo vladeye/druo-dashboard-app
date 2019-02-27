@@ -1,0 +1,12 @@
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+Date: 2018-10-30T08:13:27.622Z
+Hash: 86edfea7bf8556b3b13a
+Time: 8397ms
+chunk {main} main.js, main.js.map (main) 1.93 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 692 bytes [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.22 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 15.6 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 329 kB [initial] [rendered]
+[34mℹ[39m [90m｢wdm｣[39m: Failed to compile.
+[34mℹ[39m [90m｢wdm｣[39m: Compiling...

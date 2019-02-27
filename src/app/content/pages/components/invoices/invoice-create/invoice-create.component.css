@@ -1,0 +1,67 @@
+.m-subheader{
+    padding: 0px 0px 30px;
+  }
+.repeat-email a, .repeat-table a, .repeat-discount a {
+    position: absolute!important;
+    right: -10px;
+}
+.repeat-table a {
+  right: 30px;
+}
+.repeat-discount a {
+  right: 15px;
+}
+.repeat-email a i, .repeat-table a i, .repeat-discount a i {
+  position: relative!important;
+  top: -36px;
+  cursor: pointer;
+}
+.repeat-table a i {
+  position: relative!important;
+  top: 5px;
+}
+.repeat-discount a i {
+  position: relative!important;
+  top: 5px;
+}
+.div-table-header {
+  background: #eaeaea;
+  min-height: 45px;
+  padding: 15px 0px;
+}
+.bordered-row{
+  height: 50px;
+  border: 1px solid #f4f5f8;
+  border-top: 0px;
+  padding: 8px 0px;
+  width: 100%!important;
+}
+.bordered-row input {
+  height: 32px!important;
+  border: 0px;
+  padding: .65rem 1rem!important;
+  font-size: 1.1rem;
+}
+.repeat-table .col-2 {
+  padding: 0px 5px!important;
+}
+.repeat-table .col-2 #itemTotalPrice {
+  padding: 0.65rem 5px!important;
+}
+.total-cell {
+  background: #fcfcfc;
+  height: 66px;
+}
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.form-control[disabled] {
+    background-color: #ffffff;
+}
+.form-control {
+  height: calc(2.55rem + 2px)!important;
+}
